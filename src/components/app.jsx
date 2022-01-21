@@ -1,41 +1,41 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
-import flats from '../../data/flats';
-import FlatList from './flat_list';
+import cities from '../../data/cities';
+import CityList from './city_list';
 import Marker from './marker';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedFlat: flats[0],
-      flats
+      selectedCity: cities[0],
+      cities
     };
   }
 
   center() {
     return {
-      lat: this.state.selectedFlat.lat,
-      lng: this.state.selectedFlat.lng
+      latitude: this.state.selectedCity.latitude,
+      longitude: this.state.selectedCity.longitude
     };
   }
 
-  selectFlat = (index) => {
-    this.setState({ selectedFlat: flats[index] });
+  selectCity = (index) => {
+    this.setState({ selectedCity: cities[index] });
   }
 
   render() {
     return (
       <div>
-        <FlatList
-          flats={this.state.flats}
-          selectedFlat={this.state.selectedFlat}
-          selectFlat={this.selectFlat}
+        <CityList
+          cities={this.state.cities}
+          selectedCity={this.state.selectedCity}
+          selectCity={this.selectCity}
         />
         <div className="map-container">
           <GoogleMapReact defaultCenter={this.center()} defaultZoom={12}>
-            <Marker lat={this.state.selectedFlat.lat} lng={this.state.selectedFlat.lng} />
+            <Marker latitude={this.state.selectedCity.latitude} longitude={this.state.selectedCity.longitude} />
           </GoogleMapReact>
         </div>
       </div>
