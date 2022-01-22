@@ -16,8 +16,8 @@ class App extends Component {
 
   center() {
     return {
-      latitude: this.state.selectedCity.latitude,
-      longitude: this.state.selectedCity.longitude
+      lat: this.state.selectedCity.lat,
+      lng: this.state.selectedCity.lng
     };
   }
 
@@ -35,7 +35,7 @@ class App extends Component {
         />
         <div className="map-container">
           <GoogleMapReact defaultCenter={this.center()} defaultZoom={12}>
-            <Marker latitude={this.state.selectedCity.latitude} longitude={this.state.selectedCity.longitude} />
+            <Marker lat={this.state.selectedCity.lat} lng={this.state.selectedCity.lng} />
           </GoogleMapReact>
         </div>
       </div>
